@@ -29,10 +29,10 @@ services:
     restart: on-failure
     healthcheck:
       test: [ "CMD", "wget", "-qO-", "http://localhost:3000/health" ]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-      start_period: 15s
+      interval: 10s #10s kiểm tra 1 lần
+      timeout: 5s #mỗi lần kiểm tra được phép chạy tối đa 5s
+      retries: 5 #thất bại 5 lần thì unhealthy
+      start_period: 15s #chờ 15s trước khi bắt đầu kiểm tra
 
 volumes:
   mongo_data:
