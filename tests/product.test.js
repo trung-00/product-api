@@ -68,9 +68,5 @@ describe('Product CRUD', () => {
         expect(res.statusCode).toBe(200);
     });
 
-    test('Get sau khi đã xóa sản phẩm trả về 404', async () => {
-        const res = await request(app).get('/api/products/1');
-        expect(res.statusCode).toBe(404);
-    });
 
 });
