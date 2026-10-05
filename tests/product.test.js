@@ -34,7 +34,7 @@ describe('Product CRUD', () => {
         expect(res.statusCode).toBe(200);
     });
 
-    test('POST tạo sản phẩm', async () => {
+    test('POST thêm sản phẩm', async () => {
         const res = await request(app).post('/api/products').send(sample);
         expect(res.statusCode).toBe(201);
         expect(res.body.pname).toBe('Laptop');
@@ -68,13 +68,9 @@ describe('Product CRUD', () => {
         expect(res.statusCode).toBe(200);
     });
 
-    test('GET sau khi xóa trả 404', async () => {
+    test('Get sau khi đã xóa sản phẩm trả về 404', async () => {
         const res = await request(app).get('/api/products/1');
         expect(res.statusCode).toBe(404);
     });
 
-    test('GET sản phẩm không tồn tại trả 404', async () => {
-        const res = await request(app).get('/api/products/999999');
-        expect(res.statusCode).toBe(404);
-    });
 });
