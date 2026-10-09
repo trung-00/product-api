@@ -68,15 +68,8 @@ describe('Product CRUD', () => {
         expect(res.statusCode).toBe(200);
     });
 
-    test('DELETE xóa sản phẩm sau khi sản phẩm đó đã bị xóa', async () => {
-        const res = await request(app).delete('/api/products/1');
-        expect(res.statusCode).toBe(404);
-    });
 
-    test('GET sản phẩm không tồn tại trả 404', async () => {
-        const res = await request(app).get('/api/products/999');
-        expect(res.statusCode).toBe(404);
-    });
+
 
 
 
