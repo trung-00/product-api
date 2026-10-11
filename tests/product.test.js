@@ -29,43 +29,49 @@ afterAll(async () => {
 describe('Product CRUD', () => {
     const sample = { pid: 1, pname: 'Laptop', price: 1500, quantity: 10 };
 
+    // 1 - Get /health
     test('GET /health trả 200', async () => {
         const res = await request(app).get('/health');
         expect(res.statusCode).toBe(200);
     });
-
+    // 2 - post /api/products
     test('POST thêm sản phẩm', async () => {
         const res = await request(app).post('/api/products').send(sample);
         expect(res.statusCode).toBe(201);
         expect(res.body.pname).toBe('Laptop');
     });
-
+    //3 - post /api/products thiếu trường bắt buộc
     test('POST thiếu trường bắt buộc trả 400', async () => {
         const res = await request(app).post('/api/products').send({ pid: 2 });
         expect(res.statusCode).toBe(400);
     });
-
+    //4 - get /api/products
     test('GET danh sách', async () => {
         const res = await request(app).get('/api/products');
         expect(res.statusCode).toBe(200);
         expect(res.body.length).toBe(1);
     });
-
+    //5 - get /api/products/1
     test('GET một sản phẩm theo pid', async () => {
         const res = await request(app).get('/api/products/1');
         expect(res.statusCode).toBe(200);
         expect(res.body.pid).toBe(1);
     });
-
+    //6 - put /api/products/1
     test('PUT cập nhật giá', async () => {
         const res = await request(app).put('/api/products/1').send({ price: 1400 });
         expect(res.statusCode).toBe(200);
         expect(res.body.price).toBe(1400);
     });
-
+    // 7 - delete /api/products/1
     test('DELETE xóa sản phẩm', async () => {
         const res = await request(app).delete('/api/products/1');
         expect(res.statusCode).toBe(200);
+    });
+
+    test('DELETE xóa sản phẩm', async () => {
+        const res = await request(app).delete('/api/products/1');
+        expect(res.statusCode).toBe(404);
     });
 
 
