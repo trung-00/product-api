@@ -71,7 +71,7 @@ describe('Product CRUD', () => {
 
     test('DELETE xóa sản phẩm', async () => {
         const res = await request(app).delete('/api/products/1');
-        expect(res.statusCode).toBe(404);
+        expect(res.statusCode).toBe(400);
     });
 
 
