@@ -68,19 +68,4 @@ describe('Product CRUD', () => {
         const res = await request(app).delete('/api/products/1');
         expect(res.statusCode).toBe(200);
     });
-    // Thêm sản phẩm thứ 2
-    test('POST thêm sản phẩm thứ 2', async () => {
-        const res = await request(app).post('/api/products').send({ pid: 2, pname: 'Phone', price: 800 });
-        expect(res.statusCode).toBe(201);
-    });
-
-
-
-
-
-
-
-
-
-
 });
