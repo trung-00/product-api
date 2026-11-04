@@ -63,6 +63,11 @@ describe('Product CRUD', () => {
         expect(res.statusCode).toBe(200);
         expect(res.body.price).toBe(1400);
     });
-    // 7 - delete /api/products/1
+    //7 - delete /api/products/1
+    test('DELETE sản phẩm', async () => {
+        const res = await request(app).delete('/api/products/1');
+        expect(res.statusCode).toBe(200);
+    });
+
 
 });
