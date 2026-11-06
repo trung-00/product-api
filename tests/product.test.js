@@ -75,4 +75,10 @@ describe('Product CRUD', () => {
         expect(res.body.pname).toBe('Phone');
     });
 
+    test('DELETE sản phẩm', async () => {
+        const res = await request(app).delete('/api/products/2');
+        expect(res.statusCode).toBe(200);
+    });
+
+
 });
